@@ -29,7 +29,7 @@ file="META-INF/accesstransformer.cfg"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.irons_spellbooks]]
+[[dependencies.${mod_id}]]
 modId="curios"
 type="required"
 versionRange="[9.0.5+1.21.0,)"
