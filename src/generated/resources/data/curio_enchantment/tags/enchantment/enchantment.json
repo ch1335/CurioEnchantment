@@ -1,0 +1,9 @@
+{
+  "values": [
+    "#curio_enchantment:common_enchantments",
+    {
+      "id": "curio_enchantment:ancient_wisdom",
+      "required": false
+    }
+  ]
+}

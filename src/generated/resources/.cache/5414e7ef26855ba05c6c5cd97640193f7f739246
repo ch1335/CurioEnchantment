@@ -1,0 +1,9 @@
+// 1.21.1	2025-03-12T18:45:01.6672261	Tags for minecraft:enchantment mod id curio_enchantment
+5beacf8d4e3a669c157e86e84779bd45a3292aa9 data/curio_enchantment/tags/enchantment/common_enchantments.json
+7ea625809dd382a393a767a4b5997bc53a4b251d data/curio_enchantment/tags/enchantment/enchantment.json
+87f890d3d73ab1765bbc5ba5cf4ccb2e51293de4 data/minecraft/tags/enchantment/in_enchanting_table.json
+87f890d3d73ab1765bbc5ba5cf4ccb2e51293de4 data/minecraft/tags/enchantment/non_treasure.json
+87f890d3d73ab1765bbc5ba5cf4ccb2e51293de4 data/minecraft/tags/enchantment/on_random_loot.json
+93e23e57aed2cc6bf1a36b4ae4b75afd27477947 data/minecraft/tags/enchantment/tooltip_order.json
+87f890d3d73ab1765bbc5ba5cf4ccb2e51293de4 data/minecraft/tags/enchantment/tradeable.json
+44ae54975b0cef74b556e551f567945ce8d97288 data/minecraft/tags/enchantment/treasure.json

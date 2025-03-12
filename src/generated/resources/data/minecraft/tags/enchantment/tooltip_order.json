@@ -1,0 +1,25 @@
+{
+  "values": [
+    {
+      "id": "curio_enchantment:ancient_wisdom",
+      "required": false
+    },
+    {
+      "id": "curio_enchantment:knowledge",
+      "required": false
+    },
+    {
+      "id": "curio_enchantment:devoted",
+      "required": false
+    },
+    {
+      "id": "curio_enchantment:various",
+      "required": false
+    },
+    {
+      "id": "curio_enchantment:quick_casting",
+      "required": false
+    },
+    "#curio_enchantment:common_enchantments"
+  ]
+}

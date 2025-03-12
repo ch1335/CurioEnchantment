@@ -1,0 +1,110 @@
+package com.chen1335.curioEnchantment.data.enchantments;
+
+import com.chen1335.curioEnchantment.API.objects.DataComponentTypes;
+import com.chen1335.curioEnchantment.API.objects.Tags;
+import com.chen1335.curioEnchantment.API.objects.enchantmentEffects.CurioEnchantmentAttributeEffect;
+import io.redspace.ironsspellbooks.IronsSpellbooks;
+import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import net.minecraft.core.HolderGetter;
+import net.minecraft.core.HolderSet;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.LevelBasedValue;
+
+public class IronsSpellBooksEnchantments extends EnchantmentsProvider {
+
+    public static final ResourceKey<Enchantment> QUICK_CASTING = key("quick_casting");
+    public static final ResourceKey<Enchantment> DEVOTED = key("devoted");
+    public static final ResourceKey<Enchantment> VARIOUS = key("various");
+    public static final ResourceKey<Enchantment> KNOWLEDGE = key("knowledge");
+    public static final ResourceKey<Enchantment> ANCIENT_WISDOM = key("ancient_wisdom");
+
+    @Override
+    void bootstrap(BootstrapContext<Enchantment> context) {
+        HolderSet.Named<Item> curioEnchantable = context.lookup(Registries.ITEM).getOrThrow(Tags.ItemTags.SPELLBOOK_ENCHANTABLE);
+
+        HolderGetter<Enchantment> enchantments = context.lookup(Registries.ENCHANTMENT);
+
+        register(context,
+                ANCIENT_WISDOM,
+                Enchantment.enchantment(
+                        Enchantment.definition(
+                                curioEnchantable,
+                                2,
+                                1,
+                                Enchantment.constantCost(200),
+                                Enchantment.constantCost(200),
+                                1
+                        )
+                )
+        );
+
+        register(context,
+                KNOWLEDGE,
+                Enchantment.enchantment(
+                        Enchantment.definition(
+                                curioEnchantable,
+                                5,
+                                1,
+                                Enchantment.constantCost(30),
+                                Enchantment.constantCost(50),
+                                1
+                        )
+                )
+        );
+
+
+        register(context,
+                VARIOUS,
+                Enchantment.enchantment(
+                        Enchantment.definition(
+                                curioEnchantable,
+                                6,
+                                3,
+                                Enchantment.dynamicCost(20, 7),
+                                Enchantment.dynamicCost(20, 11),
+                                1
+                        )
+                ).exclusiveWith(HolderSet.direct(enchantments.getOrThrow(DEVOTED)))
+        );
+
+        register(context,
+                DEVOTED,
+                Enchantment.enchantment(
+                        Enchantment.definition(
+                                curioEnchantable,
+                                6,
+                                3,
+                                Enchantment.dynamicCost(20, 7),
+                                Enchantment.dynamicCost(20, 11),
+                                1
+                        )
+                )
+        );
+
+
+        register(context,
+                QUICK_CASTING,
+                Enchantment.enchantment(
+                                Enchantment.definition(
+                                        curioEnchantable,
+                                        10,
+                                        5,
+                                        Enchantment.dynamicCost(15, 7),
+                                        Enchantment.dynamicCost(20, 11),
+                                        1
+                                )
+                        )
+                        .withEffect(DataComponentTypes.CURIO_ATTRIBUTE.value(), new CurioEnchantmentAttributeEffect(AttributeRegistry.CAST_TIME_REDUCTION, LevelBasedValue.perLevel(0.04F), AttributeModifier.Operation.ADD_MULTIPLIED_BASE))
+        );
+    }
+
+    @Override
+    String getModId() {
+        return IronsSpellbooks.MODID;
+    }
+}

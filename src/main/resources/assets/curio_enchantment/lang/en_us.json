@@ -1,0 +1,21 @@
+{
+  "itemGroup.curio_enchantment": "Curio Enchantment",
+  "enchantment.curio_enchantment.solid": "Solid",
+  "enchantment.curio_enchantment.solid.desc": "Each level provides 0.5 armor value",
+  "enchantment.curio_enchantment.grow": "Grow",
+  "enchantment.curio_enchantment.grow.desc": "Each level provides a maximum health of 0.2",
+  "enchantment.curio_enchantment.light": "Light",
+  "enchantment.curio_enchantment.light.desc": "Each level provides 1% movement speed",
+  "enchantment.curio_enchantment.quick_casting": "Quick Casting",
+  "enchantment.curio_enchantment.quick_casting.desc": "Each level provides 4% cast time reduction",
+  "enchantment.curio_enchantment.devoted": "§3Devoted",
+  "enchantment.curio_enchantment.devoted.desc": "When cast the same spell continuously, each cast will increase you spell power by 15%, and the level of this enchantment is the maximum stacking times",
+  "enchantment.curio_enchantment.various": "§3Various",
+  "enchantment.curio_enchantment.various.desc": "When you cast a new spell through the spell book, increase your spell power by 5% per level",
+  "enchantment.curio_enchantment.knowledge": "§6Knowledge",
+  "enchantment.curio_enchantment.knowledge.desc": "Each spell in your spell book will provide 5 maximum mana values and 1% spell power for your spell book",
+  "enchantment.curio_enchantment.ancient_wisdom": "§dAncient Wisdom",
+  "enchantment.curio_enchantment.ancient_wisdom.desc": "+1 All spell levels on the spell book",
+  "enchantment.curio_enchantment.quick_claw": "Quick Claw",
+  "enchantment.curio_enchantment.quick_claw.desc": "Each level provides 2% mining efficiency"
+}

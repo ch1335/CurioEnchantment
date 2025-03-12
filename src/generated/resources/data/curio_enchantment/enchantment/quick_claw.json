@@ -1,0 +1,39 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "curio_enchantment"
+    }
+  ],
+  "anvil_cost": 1,
+  "description": {
+    "translate": "enchantment.curio_enchantment.quick_claw"
+  },
+  "effects": {
+    "curio_enchantment:curio_attribute": [
+      {
+        "effect": {
+          "amount": {
+            "type": "minecraft:linear",
+            "base": 0.02,
+            "per_level_above_first": 0.02
+          },
+          "attribute": "minecraft:player.mining_efficiency",
+          "operation": "add_multiplied_base"
+        }
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 20,
+    "per_level_above_first": 11
+  },
+  "max_level": 4,
+  "min_cost": {
+    "base": 15,
+    "per_level_above_first": 6
+  },
+  "slots": [],
+  "supported_items": "#curio_enchantment:hands_enchantable",
+  "weight": 10
+}

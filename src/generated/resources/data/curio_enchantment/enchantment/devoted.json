@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "irons_spellbooks"
+    }
+  ],
+  "anvil_cost": 1,
+  "description": {
+    "translate": "enchantment.curio_enchantment.devoted"
+  },
+  "max_cost": {
+    "base": 20,
+    "per_level_above_first": 11
+  },
+  "max_level": 3,
+  "min_cost": {
+    "base": 20,
+    "per_level_above_first": 7
+  },
+  "slots": [],
+  "supported_items": "#curio_enchantment:spellbook_enchantable",
+  "weight": 6
+}
