@@ -3,6 +3,7 @@ package com.chen1335.curioEnchantment.data.enchantments;
 import com.chen1335.curioEnchantment.API.objects.DataComponentTypes;
 import com.chen1335.curioEnchantment.API.objects.Tags;
 import com.chen1335.curioEnchantment.API.objects.enchantmentEffects.CurioEnchantmentAttributeEffect;
+import com.chen1335.curioEnchantment.CurioEnchantment;
 import io.redspace.ironsspellbooks.IronsSpellbooks;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import net.minecraft.core.HolderGetter;
@@ -10,6 +11,8 @@ import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -69,7 +72,7 @@ public class IronsSpellBooksEnchantments extends EnchantmentsProvider {
                                 Enchantment.dynamicCost(20, 11),
                                 1
                         )
-                ).exclusiveWith(HolderSet.direct(enchantments.getOrThrow(DEVOTED)))
+                )
         );
 
         register(context,
@@ -101,6 +104,13 @@ public class IronsSpellBooksEnchantments extends EnchantmentsProvider {
                         )
                         .withEffect(DataComponentTypes.CURIO_ATTRIBUTE.value(), new CurioEnchantmentAttributeEffect(AttributeRegistry.CAST_TIME_REDUCTION, LevelBasedValue.perLevel(0.04F), AttributeModifier.Operation.ADD_MULTIPLIED_BASE))
         );
+    }
+
+    @Override
+    protected void register(BootstrapContext<Enchantment> context, ResourceKey<Enchantment> key, Enchantment.Builder builder) {
+        HolderSet.Named<Enchantment> exclusive = context.lookup(Registries.ENCHANTMENT).getOrThrow(TagKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(CurioEnchantment.MODID, key.location().getPath() + "_exclusive")));
+        builder.exclusiveWith(exclusive);
+        super.register(context, key, builder);
     }
 
     @Override

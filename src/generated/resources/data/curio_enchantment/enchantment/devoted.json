@@ -9,6 +9,7 @@
   "description": {
     "translate": "enchantment.curio_enchantment.devoted"
   },
+  "exclusive_set": "#curio_enchantment:devoted_exclusive",
   "max_cost": {
     "base": 20,
     "per_level_above_first": 11

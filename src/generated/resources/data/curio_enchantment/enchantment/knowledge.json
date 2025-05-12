@@ -9,6 +9,7 @@
   "description": {
     "translate": "enchantment.curio_enchantment.knowledge"
   },
+  "exclusive_set": "#curio_enchantment:knowledge_exclusive",
   "max_cost": {
     "base": 50,
     "per_level_above_first": 0

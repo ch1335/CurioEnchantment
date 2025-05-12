@@ -1,7 +1,7 @@
 {
   "itemGroup.curio_enchantment": "Curio Enchantment",
   "enchantment.curio_enchantment.solid": "Solid",
-  "enchantment.curio_enchantment.solid.desc": "Each level provides 0.5 armor value",
+  "enchantment.curio_enchantment.solid.desc": "Each level provides 0.25 armor value",
   "enchantment.curio_enchantment.grow": "Grow",
   "enchantment.curio_enchantment.grow.desc": "Each level provides a maximum health of 0.2",
   "enchantment.curio_enchantment.light": "Light",

@@ -15,8 +15,8 @@
         "effect": {
           "amount": {
             "type": "minecraft:linear",
-            "base": 0.5,
-            "per_level_above_first": 0.5
+            "base": 0.25,
+            "per_level_above_first": 0.25
           },
           "attribute": "minecraft:generic.armor",
           "operation": "add_value"
@@ -24,11 +24,12 @@
       }
     ]
   },
+  "exclusive_set": "#curio_enchantment:solid_exclusive",
   "max_cost": {
     "base": 12,
     "per_level_above_first": 11
   },
-  "max_level": 5,
+  "max_level": 4,
   "min_cost": {
     "base": 1,
     "per_level_above_first": 11

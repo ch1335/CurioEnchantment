@@ -22,6 +22,9 @@ public class CEEnchantmentTagsProvider extends EnchantmentTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
+        tag(Tags.EnchantmentTags.DEVOTED_EXCLUSIVE)
+                .add(IronsSpellBooksEnchantments.VARIOUS);
+
         tag(Tags.EnchantmentTags.ENCHANTMENT)
                 .addTag(Tags.EnchantmentTags.COMMON_ENCHANTMENTS);
 

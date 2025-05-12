@@ -55,7 +55,7 @@ public class EventHandler {
             EnchantmentHelper.runIterationOnItem(itemStack, (enchantment, level) -> {
                 enchantment.value().getEffects(DataComponentTypes.CURIO_ATTRIBUTE.value()).forEach(curioEnchantmentAttributeEffect -> {
                     CurioEnchantmentAttributeEffect effect = curioEnchantmentAttributeEffect.effect();
-                    event.addModifier(effect.attribute(), new AttributeModifier(ResourceLocation.fromNamespaceAndPath(Objects.requireNonNull(enchantment.getKey()).location().getNamespace(), Objects.requireNonNull(enchantment.getKey()).location().getPath() + "_enchantment_" + event.getSlotContext().identifier() + "_" + event.getSlotContext().index()), effect.amount().calculate(level), effect.operation()));
+                    event.addModifier(effect.attribute(), new AttributeModifier(ResourceLocation.fromNamespaceAndPath(CurioEnchantment.MODID, Objects.requireNonNull(enchantment.getKey()).location().getPath() + "_enchantment_" + event.getSlotContext().identifier().toString().replace(":", "_") + "_" + event.getSlotContext().index()), effect.amount().calculate(level), effect.operation()));
 
                 });
             });
@@ -104,6 +104,7 @@ public class EventHandler {
 
             @SubscribeEvent
             public static void ModifySpellLevelEvent(ModifySpellLevelEvent event) {
+
                 HolderLookup.@Nullable RegistryLookup<Enchantment> lookup = CommonHooks.resolveLookup(Registries.ENCHANTMENT);
                 if (event.getEntity() instanceof Player player && lookup != null) {
                     @Nullable ItemStack itemStack = Utils.getPlayerSpellbookStack(player);

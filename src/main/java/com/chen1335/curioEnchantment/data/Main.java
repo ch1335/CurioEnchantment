@@ -29,6 +29,7 @@ public class Main {
     public static void GatherDataEvent(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
         PackOutput packOutput = generator.getPackOutput();
+
         DatapackBuiltinEntriesProvider datapackBuiltinEntriesProvider = generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(
                 packOutput,
                 event.getLookupProvider(),

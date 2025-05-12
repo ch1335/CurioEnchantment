@@ -24,6 +24,7 @@
       }
     ]
   },
+  "exclusive_set": "#curio_enchantment:quick_claw_exclusive",
   "max_cost": {
     "base": 20,
     "per_level_above_first": 11

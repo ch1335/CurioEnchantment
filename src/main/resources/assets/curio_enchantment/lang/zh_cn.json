@@ -1,7 +1,7 @@
 {
   "itemGroup.curio_enchantment": "饰品附魔",
   "enchantment.curio_enchantment.solid": "坚固",
-  "enchantment.curio_enchantment.solid.desc": "每级提供0.5护甲值",
+  "enchantment.curio_enchantment.solid.desc": "每级提供0.25护甲值",
   "enchantment.curio_enchantment.grow": "生长",
   "enchantment.curio_enchantment.grow.desc": "每级提供0.2最大生命值",
   "enchantment.curio_enchantment.light": "轻巧",

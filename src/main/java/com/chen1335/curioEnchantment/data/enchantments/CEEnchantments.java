@@ -8,6 +8,8 @@ import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Item;
@@ -52,7 +54,7 @@ public class CEEnchantments extends EnchantmentsProvider {
                                         1
                                 )
                         )
-                        .withEffect(DataComponentTypes.CURIO_ATTRIBUTE.value(), new CurioEnchantmentAttributeEffect(Attributes.MOVEMENT_SPEED, LevelBasedValue.perLevel(0.001F), AttributeModifier.Operation.ADD_VALUE))
+                        .withEffect(DataComponentTypes.CURIO_ATTRIBUTE.value(), new CurioEnchantmentAttributeEffect(Attributes.MOVEMENT_SPEED, LevelBasedValue.perLevel(0.01F), AttributeModifier.Operation.ADD_MULTIPLIED_BASE))
         );
 
         register(context,
@@ -61,13 +63,13 @@ public class CEEnchantments extends EnchantmentsProvider {
                                 Enchantment.definition(
                                         curioEnchantable,
                                         10,
-                                        5,
+                                        4,
                                         Enchantment.dynamicCost(1, 11),
                                         Enchantment.dynamicCost(12, 11),
                                         1
                                 )
                         )
-                        .withEffect(DataComponentTypes.CURIO_ATTRIBUTE.value(), new CurioEnchantmentAttributeEffect(Attributes.ARMOR, LevelBasedValue.perLevel(0.5F), AttributeModifier.Operation.ADD_VALUE))
+                        .withEffect(DataComponentTypes.CURIO_ATTRIBUTE.value(), new CurioEnchantmentAttributeEffect(Attributes.ARMOR, LevelBasedValue.perLevel(0.25F), AttributeModifier.Operation.ADD_VALUE))
         );
 
         register(context,
@@ -76,7 +78,7 @@ public class CEEnchantments extends EnchantmentsProvider {
                                 Enchantment.definition(
                                         curioEnchantable,
                                         6,
-                                        4,
+                                        5,
                                         Enchantment.dynamicCost(1, 11),
                                         Enchantment.dynamicCost(12, 11),
                                         1
@@ -85,6 +87,14 @@ public class CEEnchantments extends EnchantmentsProvider {
                         .withEffect(DataComponentTypes.CURIO_ATTRIBUTE.value(), new CurioEnchantmentAttributeEffect(Attributes.MAX_HEALTH, LevelBasedValue.perLevel(0.2F), AttributeModifier.Operation.ADD_VALUE))
 
         );
+    }
+
+
+    @Override
+    protected void register(BootstrapContext<Enchantment> context, ResourceKey<Enchantment> key, Enchantment.Builder builder) {
+        HolderSet.Named<Enchantment> exclusive = context.lookup(Registries.ENCHANTMENT).getOrThrow(TagKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(CurioEnchantment.MODID, key.location().getPath() + "_exclusive")));
+        builder.exclusiveWith(exclusive);
+        super.register(context, key, builder);
     }
 
     @Override

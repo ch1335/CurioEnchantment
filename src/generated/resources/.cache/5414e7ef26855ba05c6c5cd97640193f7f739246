@@ -1,5 +1,6 @@
-// 1.21.1	2025-03-12T18:45:01.6672261	Tags for minecraft:enchantment mod id curio_enchantment
+// 1.21.1	2025-03-25T13:33:29.8383471	Tags for minecraft:enchantment mod id curio_enchantment
 5beacf8d4e3a669c157e86e84779bd45a3292aa9 data/curio_enchantment/tags/enchantment/common_enchantments.json
+91595d86a571c5c73e1f2db149d0eee7007ed4a4 data/curio_enchantment/tags/enchantment/devoted_exclusive.json
 7ea625809dd382a393a767a4b5997bc53a4b251d data/curio_enchantment/tags/enchantment/enchantment.json
 87f890d3d73ab1765bbc5ba5cf4ccb2e51293de4 data/minecraft/tags/enchantment/in_enchanting_table.json
 87f890d3d73ab1765bbc5ba5cf4ccb2e51293de4 data/minecraft/tags/enchantment/non_treasure.json
