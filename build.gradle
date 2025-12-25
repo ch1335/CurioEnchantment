@@ -135,8 +135,6 @@ configurations {
 }
 
 dependencies {
-    implementation fileTree(dir:'curiosLib')
-
     implementation "curse.maven:architectury-api-419699:5786327"
     implementation "curse.maven:artifacts-312353:7113293"
     implementation "curse.maven:bookshelf-228525:7335846"
@@ -149,15 +147,13 @@ dependencies {
     implementation "curse.maven:playeranimator-658587:6024462"
     implementation "curse.maven:prickle-1023259:6961457"
     implementation "curse.maven:puzzles-lib-495476:7140307"
+    implementation "curse.maven:curios-309927:6529130"
 }
 
-tasks.register("buildWithoutDataGen") {
-    group "build"
-    dependsOn build
-    jar {
-        exclude "com/chen1335/data"
-    }
+tasks.named('jar',Jar).configure {
+    exclude "com/chen1335/curioEnchantment/data"
 }
+
 
 // This block of code expands all declared replace properties in the specified resource targets.
 // A missing property will result in an error. Properties are expanded using ${} Groovy notation.
