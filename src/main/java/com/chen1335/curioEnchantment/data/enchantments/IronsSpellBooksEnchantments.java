@@ -1,7 +1,7 @@
 package com.chen1335.curioEnchantment.data.enchantments;
 
 import com.chen1335.curioEnchantment.API.objects.DataComponentTypes;
-import com.chen1335.curioEnchantment.API.objects.Tags;
+import com.chen1335.curioEnchantment.API.objects.CETags;
 import com.chen1335.curioEnchantment.API.objects.enchantmentEffects.CurioEnchantmentAttributeEffect;
 import com.chen1335.curioEnchantment.CurioEnchantment;
 import io.redspace.ironsspellbooks.IronsSpellbooks;
@@ -28,9 +28,7 @@ public class IronsSpellBooksEnchantments extends EnchantmentsProvider {
 
     @Override
     void bootstrap(BootstrapContext<Enchantment> context) {
-        HolderSet.Named<Item> curioEnchantable = context.lookup(Registries.ITEM).getOrThrow(Tags.ItemTags.SPELLBOOK_ENCHANTABLE);
-
-        HolderGetter<Enchantment> enchantments = context.lookup(Registries.ENCHANTMENT);
+        HolderSet.Named<Item> curioEnchantable = context.lookup(Registries.ITEM).getOrThrow(CETags.ItemTags.SPELLBOOK_ENCHANTABLE);
 
         register(context,
                 ANCIENT_WISDOM,
@@ -108,7 +106,7 @@ public class IronsSpellBooksEnchantments extends EnchantmentsProvider {
 
     @Override
     protected void register(BootstrapContext<Enchantment> context, ResourceKey<Enchantment> key, Enchantment.Builder builder) {
-        HolderSet.Named<Enchantment> exclusive = context.lookup(Registries.ENCHANTMENT).getOrThrow(TagKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(CurioEnchantment.MODID, key.location().getPath() + "_exclusive")));
+        HolderSet.Named<Enchantment> exclusive = context.lookup(Registries.ENCHANTMENT).getOrThrow(TagKey.create(Registries.ENCHANTMENT, CurioEnchantment.id(key.location().getPath() + "_exclusive")));
         builder.exclusiveWith(exclusive);
         super.register(context, key, builder);
     }

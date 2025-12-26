@@ -1,6 +1,6 @@
 package com.chen1335.curioEnchantment.data;
 
-import com.chen1335.curioEnchantment.API.objects.Tags;
+import com.chen1335.curioEnchantment.API.objects.CETags;
 import com.chen1335.curioEnchantment.CurioEnchantment;
 import com.chen1335.curioEnchantment.data.enchantments.CEEnchantments;
 import com.chen1335.curioEnchantment.data.enchantments.IronsSpellBooksEnchantments;
@@ -22,11 +22,11 @@ public class CEEnchantmentTagsProvider extends EnchantmentTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
-        tag(Tags.EnchantmentTags.DEVOTED_EXCLUSIVE)
+        tag(CETags.EnchantmentTags.DEVOTED_EXCLUSIVE)
                 .add(IronsSpellBooksEnchantments.VARIOUS);
 
-        tag(Tags.EnchantmentTags.ENCHANTMENT)
-                .addTag(Tags.EnchantmentTags.COMMON_ENCHANTMENTS);
+        tag(CETags.EnchantmentTags.ENCHANTMENT)
+                .addTag(CETags.EnchantmentTags.COMMON_ENCHANTMENTS);
 
         tag(EnchantmentTags.TOOLTIP_ORDER)
                 .addOptional(IronsSpellBooksEnchantments.ANCIENT_WISDOM.location())
@@ -34,9 +34,9 @@ public class CEEnchantmentTagsProvider extends EnchantmentTagsProvider {
                 .addOptional(IronsSpellBooksEnchantments.DEVOTED.location())
                 .addOptional(IronsSpellBooksEnchantments.VARIOUS.location())
                 .addOptional(IronsSpellBooksEnchantments.QUICK_CASTING.location())
-                .addTag(Tags.EnchantmentTags.COMMON_ENCHANTMENTS);
+                .addTag(CETags.EnchantmentTags.COMMON_ENCHANTMENTS);
 
-        tag(Tags.EnchantmentTags.COMMON_ENCHANTMENTS).add(
+        tag(CETags.EnchantmentTags.COMMON_ENCHANTMENTS).add(
                 CEEnchantments.SOLID,
                 CEEnchantments.GROW,
                 CEEnchantments.LIGHT,
@@ -44,25 +44,25 @@ public class CEEnchantmentTagsProvider extends EnchantmentTagsProvider {
         );
 
         tag(EnchantmentTags.TRADEABLE).addTag(
-                Tags.EnchantmentTags.COMMON_ENCHANTMENTS
+                CETags.EnchantmentTags.COMMON_ENCHANTMENTS
         );
 
         tag(EnchantmentTags.IN_ENCHANTING_TABLE).addTag(
-                Tags.EnchantmentTags.COMMON_ENCHANTMENTS
+                CETags.EnchantmentTags.COMMON_ENCHANTMENTS
         );
 
         tag(EnchantmentTags.NON_TREASURE).addTag(
-                Tags.EnchantmentTags.COMMON_ENCHANTMENTS
+                CETags.EnchantmentTags.COMMON_ENCHANTMENTS
         );
 
         tag(EnchantmentTags.ON_RANDOM_LOOT).addTag(
-                Tags.EnchantmentTags.COMMON_ENCHANTMENTS
+                CETags.EnchantmentTags.COMMON_ENCHANTMENTS
         );
         addOptionTags(provider);
     }
 
     protected void addOptionTags(HolderLookup.@NotNull Provider provider) {
-        tag(Tags.EnchantmentTags.ENCHANTMENT)
+        tag(CETags.EnchantmentTags.ENCHANTMENT)
                 .addOptional(IronsSpellBooksEnchantments.ANCIENT_WISDOM.location())
         ;
 
@@ -71,7 +71,7 @@ public class CEEnchantmentTagsProvider extends EnchantmentTagsProvider {
                 .addOptional(IronsSpellBooksEnchantments.ANCIENT_WISDOM.location())
         ;
 
-        tag(Tags.EnchantmentTags.COMMON_ENCHANTMENTS)
+        tag(CETags.EnchantmentTags.COMMON_ENCHANTMENTS)
                 .addOptional(IronsSpellBooksEnchantments.QUICK_CASTING.location())
                 .addOptional(IronsSpellBooksEnchantments.DEVOTED.location())
                 .addOptional(IronsSpellBooksEnchantments.VARIOUS.location())

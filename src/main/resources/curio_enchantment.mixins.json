@@ -1,10 +1,12 @@
 {
   "required": true,
-  "package": "com.chen1335.curioEnchantment.mixin.minecraft",
+  "package": "com.chen1335.curioEnchantment.mixins",
+  "plugin": "com.chen1335.curioEnchantment.mixins.MainMixinPlugin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "ItemMixin",
-    "TagLoaderMixin"
+    "irons_spellbooks.AbstractSpellMixin",
+    "curio_enchantment.ItemMixin",
+    "curio_enchantment.TagLoaderMixin"
   ],
   "minVersion": "0.8",
   "client": [

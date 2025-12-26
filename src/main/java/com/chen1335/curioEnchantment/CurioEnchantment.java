@@ -2,7 +2,7 @@ package com.chen1335.curioEnchantment;
 
 import com.chen1335.curioEnchantment.API.objects.AttachmentTypes;
 import com.chen1335.curioEnchantment.API.objects.DataComponentTypes;
-import com.chen1335.curioEnchantment.API.objects.Tags;
+import com.chen1335.curioEnchantment.API.objects.CETags;
 import com.chen1335.curioEnchantment.common.EventHandler;
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.registries.Registries;
@@ -34,7 +34,7 @@ public class CurioEnchantment {
             .title(Component.translatable("itemGroup.curio_enchantment"))
             .icon(Items.ENCHANTED_BOOK::getDefaultInstance)
             .displayItems((parameters, output) -> {
-                parameters.holders().lookupOrThrow(Registries.ENCHANTMENT).get(Tags.EnchantmentTags.ENCHANTMENT).ifPresent(holders -> {
+                parameters.holders().lookupOrThrow(Registries.ENCHANTMENT).get(CETags.EnchantmentTags.ENCHANTMENT).ifPresent(holders -> {
                     holders.forEach(enchantmentHolder -> {
                         output.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantmentHolder, enchantmentHolder.value().getMaxLevel())));
                     });
@@ -49,10 +49,9 @@ public class CurioEnchantment {
             IRONS_SPELL_BOOKS_LOADED = true;
             NeoForge.EVENT_BUS.register(EventHandler.GAME.IronsSpellBooksEvents.class);
         }
-//        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
-    public static ResourceLocation getResourceLocation(String name) {
+    public static ResourceLocation id(String name) {
         return ResourceLocation.fromNamespaceAndPath(MODID, name);
     }
 }

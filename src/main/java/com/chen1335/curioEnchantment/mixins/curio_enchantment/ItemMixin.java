@@ -1,4 +1,4 @@
-package com.chen1335.curioEnchantment.mixin.minecraft;
+package com.chen1335.curioEnchantment.mixins.curio_enchantment;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import net.minecraft.world.item.Item;

@@ -1,6 +1,6 @@
 package com.chen1335.curioEnchantment.data;
 
-import com.chen1335.curioEnchantment.API.objects.Tags;
+import com.chen1335.curioEnchantment.API.objects.CETags;
 import com.chen1335.curioEnchantment.CurioEnchantment;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -18,6 +18,6 @@ public class CEItemTagsProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
-        tag(Tags.ItemTags.CURIOS_ENCHANTABLE);
+        tag(CETags.ItemTags.CURIOS_ENCHANTABLE);
     }
 }

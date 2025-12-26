@@ -15,8 +15,8 @@
         "effect": {
           "amount": {
             "type": "minecraft:linear",
-            "base": 0.01,
-            "per_level_above_first": 0.01
+            "base": 0.05,
+            "per_level_above_first": 0.05
           },
           "attribute": "minecraft:generic.movement_speed",
           "operation": "add_multiplied_base"
@@ -26,13 +26,13 @@
   },
   "exclusive_set": "#curio_enchantment:light_exclusive",
   "max_cost": {
-    "base": 20,
-    "per_level_above_first": 11
+    "base": 37,
+    "per_level_above_first": 20
   },
   "max_level": 2,
   "min_cost": {
-    "base": 15,
-    "per_level_above_first": 10
+    "base": 12,
+    "per_level_above_first": 20
   },
   "slots": [],
   "supported_items": "#curio_enchantment:curios_enchantable",

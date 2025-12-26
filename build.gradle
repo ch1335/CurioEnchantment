@@ -141,7 +141,7 @@ dependencies {
     implementation "curse.maven:cloth-config-348521:5729127"
     implementation "curse.maven:mmmmmmmmmmmm-225738:7206981"
     implementation "curse.maven:enchantment-descriptions-250419:7039849"
-    implementation "curse.maven:geckolib-388172:7315741"
+    implementation "curse.maven:geckolib-388172:7023453"
     implementation "curse.maven:irons-spells-n-spellbooks-855414:7271541"
     implementation "curse.maven:selene-499980:7340883"
     implementation "curse.maven:playeranimator-658587:6024462"
@@ -150,9 +150,6 @@ dependencies {
     implementation "curse.maven:curios-309927:6529130"
 }
 
-tasks.named('jar',Jar).configure {
-    exclude "com/chen1335/curioEnchantment/data"
-}
 
 
 // This block of code expands all declared replace properties in the specified resource targets.

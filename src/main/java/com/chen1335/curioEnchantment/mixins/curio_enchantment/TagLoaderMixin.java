@@ -1,6 +1,6 @@
-package com.chen1335.curioEnchantment.mixin.minecraft;
+package com.chen1335.curioEnchantment.mixins.curio_enchantment;
 
-import com.chen1335.curioEnchantment.API.objects.Tags;
+import com.chen1335.curioEnchantment.API.objects.CETags;
 import com.chen1335.curioEnchantment.CurioEnchantment;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
@@ -43,7 +43,7 @@ public class TagLoaderMixin {
             slots.forEach(id -> {
                 TagEntry tagEntry = TagEntry.optionalTag(ResourceLocation.fromNamespaceAndPath("curios", id));
                 TagLoader.EntryWithSource entryWithSource = new TagLoader.EntryWithSource(tagEntry, "curio_enchantment");
-                original.computeIfAbsent(Tags.ItemTags.CURIOS_ENCHANTABLE.location(), (resourceLocation) -> new ArrayList<>()).add(entryWithSource);
+                original.computeIfAbsent(CETags.ItemTags.CURIOS_ENCHANTABLE.location(), (resourceLocation) -> new ArrayList<>()).add(entryWithSource);
                 original.computeIfAbsent(ResourceLocation.fromNamespaceAndPath(CurioEnchantment.MODID, id + "_enchantable"), (resourceLocation) -> new ArrayList<>()).add(entryWithSource);
 
             });

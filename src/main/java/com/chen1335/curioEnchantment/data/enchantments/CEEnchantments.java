@@ -1,7 +1,7 @@
 package com.chen1335.curioEnchantment.data.enchantments;
 
 import com.chen1335.curioEnchantment.API.objects.DataComponentTypes;
-import com.chen1335.curioEnchantment.API.objects.Tags;
+import com.chen1335.curioEnchantment.API.objects.CETags;
 import com.chen1335.curioEnchantment.API.objects.enchantmentEffects.CurioEnchantmentAttributeEffect;
 import com.chen1335.curioEnchantment.CurioEnchantment;
 import net.minecraft.core.HolderSet;
@@ -23,8 +23,8 @@ public class CEEnchantments extends EnchantmentsProvider {
     public static final ResourceKey<Enchantment> QUICK_CLAW = key("quick_claw");
 
     public void bootstrap(BootstrapContext<Enchantment> context) {
-        HolderSet.Named<Item> curioEnchantable = context.lookup(Registries.ITEM).getOrThrow(Tags.ItemTags.CURIOS_ENCHANTABLE);
-        HolderSet.Named<Item> handsEnchantable = context.lookup(Registries.ITEM).getOrThrow(Tags.ItemTags.HANDS_ENCHANTABLE);
+        HolderSet.Named<Item> curioEnchantable = context.lookup(Registries.ITEM).getOrThrow(CETags.ItemTags.CURIOS_ENCHANTABLE);
+        HolderSet.Named<Item> handsEnchantable = context.lookup(Registries.ITEM).getOrThrow(CETags.ItemTags.HANDS_ENCHANTABLE);
 
 
         register(context,
@@ -49,12 +49,12 @@ public class CEEnchantments extends EnchantmentsProvider {
                                         curioEnchantable,
                                         10,
                                         2,
-                                        Enchantment.dynamicCost(15, 10),
-                                        Enchantment.dynamicCost(20, 11),
+                                        Enchantment.dynamicCost(12, 20),
+                                        Enchantment.dynamicCost(37, 20),
                                         1
                                 )
                         )
-                        .withEffect(DataComponentTypes.CURIO_ATTRIBUTE.value(), new CurioEnchantmentAttributeEffect(Attributes.MOVEMENT_SPEED, LevelBasedValue.perLevel(0.01F), AttributeModifier.Operation.ADD_MULTIPLIED_BASE))
+                        .withEffect(DataComponentTypes.CURIO_ATTRIBUTE.value(), new CurioEnchantmentAttributeEffect(Attributes.MOVEMENT_SPEED, LevelBasedValue.perLevel(0.05F), AttributeModifier.Operation.ADD_MULTIPLIED_BASE))
         );
 
         register(context,

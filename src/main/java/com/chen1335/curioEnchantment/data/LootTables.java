@@ -51,6 +51,6 @@ public class LootTables extends LootTableProvider {
     }
 
     private static ResourceKey<LootTable> register(String name) {
-        return ResourceKey.create(Registries.LOOT_TABLE, CurioEnchantment.getResourceLocation(name));
+        return ResourceKey.create(Registries.LOOT_TABLE, CurioEnchantment.id(name));
     }
 }

@@ -21,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-@EventBusSubscriber(modid = CurioEnchantment.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = CurioEnchantment.MODID)
 public class Main {
     public static Map<ResourceKey<?>, List<ICondition>> conditions = new HashMap<>();
 

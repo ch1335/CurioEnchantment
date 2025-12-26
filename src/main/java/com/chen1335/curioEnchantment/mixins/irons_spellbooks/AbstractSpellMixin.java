@@ -1,4 +1,4 @@
-package com.chen1335.curioEnchantment.mixin.ironsSpellBooks;
+package com.chen1335.curioEnchantment.mixins.irons_spellbooks;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;

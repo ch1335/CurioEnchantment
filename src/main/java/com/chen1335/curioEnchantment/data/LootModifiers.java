@@ -28,6 +28,6 @@ public class LootModifiers extends GlobalLootModifierProvider {
     }
 
     private static ResourceKey<LootTable> key(String pName) {
-        return ResourceKey.create(Registries.LOOT_TABLE, CurioEnchantment.getResourceLocation(pName));
+        return ResourceKey.create(Registries.LOOT_TABLE, CurioEnchantment.id(pName));
     }
 }

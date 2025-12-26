@@ -32,7 +32,7 @@ import top.theillusivec4.curios.api.event.CurioAttributeModifierEvent;
 import java.util.Objects;
 
 public class EventHandler {
-    @EventBusSubscriber(modid = CurioEnchantment.MODID, bus = EventBusSubscriber.Bus.GAME)
+    @EventBusSubscriber(modid = CurioEnchantment.MODID)
     public static class GAME {
         @SubscribeEvent
         public static void curioAttributeEvent(CurioAttributeModifierEvent event) {
@@ -46,8 +46,8 @@ public class EventHandler {
                 if (itemStack.getItem() instanceof SpellBook && itemStack.getEnchantmentLevel(lookup.getOrThrow(IronsSpellBooksEnchantments.KNOWLEDGE)) > 0) {
                     @Nullable ISpellContainer container = itemStack.get(ComponentRegistry.SPELL_CONTAINER);
                     if (container != null) {
-                        event.addModifier(AttributeRegistry.MAX_MANA, new AttributeModifier(CurioEnchantment.getResourceLocation("knowledge_enchantment"), 5 * container.getActiveSpellCount(), AttributeModifier.Operation.ADD_VALUE));
-                        event.addModifier(AttributeRegistry.SPELL_POWER, new AttributeModifier(CurioEnchantment.getResourceLocation("knowledge_enchantment"), 0.01 * container.getActiveSpellCount(), AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                        event.addModifier(AttributeRegistry.MAX_MANA, new AttributeModifier(CurioEnchantment.id("knowledge_enchantment"), 5 * container.getActiveSpellCount(), AttributeModifier.Operation.ADD_VALUE));
+                        event.addModifier(AttributeRegistry.SPELL_POWER, new AttributeModifier(CurioEnchantment.id("knowledge_enchantment"), 0.01 * container.getActiveSpellCount(), AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
                     }
                 }
             }
