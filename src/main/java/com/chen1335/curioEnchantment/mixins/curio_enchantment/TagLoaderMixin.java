@@ -39,7 +39,7 @@ public class TagLoaderMixin {
                 });
             });
 
-            CurioEnchantment.LOGGER.info("Discover {} possible curios type", slots.size());
+            CurioEnchantment.LOGGER.info("Discover {} possible curios type:{}", slots.size(), slots);
             slots.forEach(id -> {
                 TagEntry tagEntry = TagEntry.optionalTag(ResourceLocation.fromNamespaceAndPath("curios", id));
                 TagLoader.EntryWithSource entryWithSource = new TagLoader.EntryWithSource(tagEntry, "curio_enchantment");
