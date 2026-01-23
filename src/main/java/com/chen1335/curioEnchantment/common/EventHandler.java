@@ -14,6 +14,7 @@ import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.item.SpellBook;
 import io.redspace.ironsspellbooks.registries.ComponentRegistry;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -30,6 +31,7 @@ import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.event.CurioAttributeModifierEvent;
 
 import java.util.Objects;
+import java.util.Optional;
 
 public class EventHandler {
     @EventBusSubscriber(modid = CurioEnchantment.MODID)
@@ -43,11 +45,14 @@ public class EventHandler {
             }
 
             if (CurioEnchantment.IRONS_SPELL_BOOKS_LOADED) {
-                if (itemStack.getItem() instanceof SpellBook && itemStack.getEnchantmentLevel(lookup.getOrThrow(IronsSpellBooksEnchantments.KNOWLEDGE)) > 0) {
-                    @Nullable ISpellContainer container = itemStack.get(ComponentRegistry.SPELL_CONTAINER);
-                    if (container != null) {
-                        event.addModifier(AttributeRegistry.MAX_MANA, new AttributeModifier(CurioEnchantment.id("knowledge_enchantment"), 5 * container.getActiveSpellCount(), AttributeModifier.Operation.ADD_VALUE));
-                        event.addModifier(AttributeRegistry.SPELL_POWER, new AttributeModifier(CurioEnchantment.id("knowledge_enchantment"), 0.01 * container.getActiveSpellCount(), AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                if (itemStack.getItem() instanceof SpellBook) {
+                    Optional<Holder.Reference<Enchantment>> knowledgeHolder = lookup.get(IronsSpellBooksEnchantments.KNOWLEDGE);
+                    if (knowledgeHolder.isPresent() && itemStack.getEnchantmentLevel(knowledgeHolder.get()) > 0) {
+                        @Nullable ISpellContainer container = itemStack.get(ComponentRegistry.SPELL_CONTAINER);
+                        if (container != null) {
+                            event.addModifier(AttributeRegistry.MAX_MANA, new AttributeModifier(CurioEnchantment.id("knowledge_enchantment"), 5 * container.getActiveSpellCount(), AttributeModifier.Operation.ADD_VALUE));
+                            event.addModifier(AttributeRegistry.SPELL_POWER, new AttributeModifier(CurioEnchantment.id("knowledge_enchantment"), 0.01 * container.getActiveSpellCount(), AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                        }
                     }
                 }
             }
@@ -78,24 +83,31 @@ public class EventHandler {
                     @Nullable ItemStack itemStack = Utils.getPlayerSpellbookStack(player);
                     if (itemStack != null) {
                         PlayerData playerData = player.getData(AttachmentTypes.PLAYER_DATA);
+                        HolderLookup.RegistryLookup<Enchantment> enchantmentLookup = event.getEntity().level().registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
 
-                        int devotedLevel = itemStack.getEnchantmentLevel(event.getEntity().level().registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(IronsSpellBooksEnchantments.DEVOTED));
-                        if (devotedLevel > 0) {
-                            if (Objects.equals(playerData.lastCastSpell, event.getSpellId()) || Objects.equals(playerData.lastCastSpell, "")) {
-                                playerData.lastCastSpell = event.getSpellId();
-                                playerData.sameCastSpellCount = Math.min(playerData.sameCastSpellCount + 1, devotedLevel);
-                                spellPower.addTransientModifier(new AttributeModifier(AttributeModifierResourceLocations.DEVOTED_ENCHANTMENT, 0.15 * playerData.sameCastSpellCount, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-                            } else {
-                                playerData.lastCastSpell = event.getSpellId();
-                                playerData.sameCastSpellCount = 0;
+                        Optional<Holder.Reference<Enchantment>> devotedHolder = enchantmentLookup.get(IronsSpellBooksEnchantments.DEVOTED);
+                        if (devotedHolder.isPresent()) {
+                            int devotedLevel = itemStack.getEnchantmentLevel(devotedHolder.get());
+                            if (devotedLevel > 0) {
+                                if (Objects.equals(playerData.lastCastSpell, event.getSpellId()) || Objects.equals(playerData.lastCastSpell, "")) {
+                                    playerData.lastCastSpell = event.getSpellId();
+                                    playerData.sameCastSpellCount = Math.min(playerData.sameCastSpellCount + 1, devotedLevel);
+                                    spellPower.addTransientModifier(new AttributeModifier(AttributeModifierResourceLocations.DEVOTED_ENCHANTMENT, 0.15 * playerData.sameCastSpellCount, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                                } else {
+                                    playerData.lastCastSpell = event.getSpellId();
+                                    playerData.sameCastSpellCount = 0;
+                                }
                             }
                         }
 
-                        int variousLevel = itemStack.getEnchantmentLevel(event.getEntity().level().registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(IronsSpellBooksEnchantments.VARIOUS));
-                        if (variousLevel > 0) {
-                            if (!Objects.equals(playerData.lastCastSpell, event.getSpellId())) {
-                                playerData.lastCastSpell = event.getSpellId();
-                                spellPower.addTransientModifier(new AttributeModifier(AttributeModifierResourceLocations.VARIOUS_ENCHANTMENT, 0.05 * variousLevel, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                        Optional<Holder.Reference<Enchantment>> variousHolder = enchantmentLookup.get(IronsSpellBooksEnchantments.VARIOUS);
+                        if (variousHolder.isPresent()) {
+                            int variousLevel = itemStack.getEnchantmentLevel(variousHolder.get());
+                            if (variousLevel > 0) {
+                                if (!Objects.equals(playerData.lastCastSpell, event.getSpellId())) {
+                                    playerData.lastCastSpell = event.getSpellId();
+                                    spellPower.addTransientModifier(new AttributeModifier(AttributeModifierResourceLocations.VARIOUS_ENCHANTMENT, 0.05 * variousLevel, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                                }
                             }
                         }
                     }
@@ -109,8 +121,11 @@ public class EventHandler {
                 if (event.getEntity() instanceof Player player && lookup != null) {
                     @Nullable ItemStack itemStack = Utils.getPlayerSpellbookStack(player);
                     if (itemStack != null) {
-                        int ancientWisdomLevel = itemStack.getEnchantmentLevel(lookup.getOrThrow(IronsSpellBooksEnchantments.ANCIENT_WISDOM));
-                        event.addLevels(ancientWisdomLevel);
+                        Optional<Holder.Reference<Enchantment>> ancientWisdomHolder = lookup.get(IronsSpellBooksEnchantments.ANCIENT_WISDOM);
+                        if (ancientWisdomHolder.isPresent()) {
+                            int ancientWisdomLevel = itemStack.getEnchantmentLevel(ancientWisdomHolder.get());
+                            event.addLevels(ancientWisdomLevel);
+                        }
                     }
                 }
             }
