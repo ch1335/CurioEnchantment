@@ -1,0 +1,21 @@
+{
+  "itemGroup.curio_enchantment": "饰品附魔",
+  "enchantment.curio_enchantment.solid": "坚固",
+  "enchantment.curio_enchantment.solid.desc": "每级提供0.5护甲值",
+  "enchantment.curio_enchantment.grow": "生长",
+  "enchantment.curio_enchantment.grow.desc": "每级提供0.2最大生命值",
+  "enchantment.curio_enchantment.light": "轻巧",
+  "enchantment.curio_enchantment.light.desc": "每级提供1%移动速度",
+  "enchantment.curio_enchantment.quick_casting": "快速施法",
+  "enchantment.curio_enchantment.quick_casting.desc": "每级提供4%吟唱缩短",
+  "enchantment.curio_enchantment.devoted": "§3专一",
+  "enchantment.curio_enchantment.devoted.desc": "连续释放同一法术时，每次释放都会使你的法术强度增加15%，此附魔的等级为最多叠加次数",
+  "enchantment.curio_enchantment.various": "§3多样",
+  "enchantment.curio_enchantment.various.desc": "当你通过法术书释放了一个新的法术时，使你的法术强度增加每级5%",
+  "enchantment.curio_enchantment.knowledge": "§6学识",
+  "enchantment.curio_enchantment.knowledge.desc": "在你法术书中的每个法术会为你的法术书提供5最大魔力值和1%法术强度",
+  "enchantment.curio_enchantment.ancient_wisdom": "§d远古智慧",
+  "enchantment.curio_enchantment.ancient_wisdom.desc": "法术书上的所有法术等级+1",
+  "enchantment.curio_enchantment.quick_claw": "快爪",
+  "enchantment.curio_enchantment.quick_claw.desc": "每级提供2%挖掘效率"
+}
